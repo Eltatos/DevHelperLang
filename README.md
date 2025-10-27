@@ -8,6 +8,6 @@
 
 ### ¡SOLO 3 COMANDOS!
 ```bash
-git clone https://github.com/TU_USUARIO/DevHelperLang
+git clone https://github.com/Eltatos/DevHelperLang.git
 cd DevHelperLang
 ./INSTALADOR_UN_CLIC.sh
