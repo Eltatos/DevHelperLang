@@ -4,7 +4,8 @@
 
 ## ⚡ INSTALACIÓN EN 30 SEGUNDOS
 
-### ¡SOLO 2 COMANDOS!
+### ¡SOLO 3 COMANDOS!
 ```bash
-git clone https://github.com/Eltatos/DevHelperLang.git
-cd DevHelperLang && ./INSTALADOR_UN_CLIC.sh
+git clone https://github.com/Eltatos/DevHelperLang
+cd DevHelperLang
+bash INSTALADOR_UN_CLIC.sh
