@@ -7,7 +7,6 @@ echo "=============================================="
 echo "No necesitas escribir comandos, todo es automático"
 echo ""
 
-# Función para mostrar progreso - SINTÁXIS SIMPLIFICADA
 mostrar_progreso() {
     echo "✅ $1"
 }
