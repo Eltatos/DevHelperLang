@@ -1,5 +1,5 @@
 #!/bin/bash
-# DEVHELPER LANGUAGE - INSTALADOR CORREGIDO
+# DEVHELPER LANGUAGE - INSTALADOR OFICIAL DE UN CLIC
 
 echo ""
 echo "🚀 INICIANDO INSTALACIÓN DEVHELPER LANGUAGE..."
@@ -19,17 +19,17 @@ if [ ! -d "/data/data/com.termux/files/home" ]; then
     exit 1
 fi
 
-# 2. Actualizar sistema silenciosamente
+# 2. Actualizar sistema
 echo "🔄 Actualizando sistema..."
 pkg update -y > /dev/null 2>&1 && pkg upgrade -y > /dev/null 2>&1
 mostrar_progreso "Sistema actualizado"
 
-# 3. Instalar Python (requerido)
+# 3. Instalar Python
 echo "🐍 Instalando Python..."
 pkg install -y python > /dev/null 2>&1
 mostrar_progreso "Python instalado"
 
-# 4. Crear directorios necesarios
+# 4. Crear directorios
 echo "📁 Creando estructura..."
 mkdir -p ~/bin ~/.devhelper ~/.devhelper/ejemplos
 mostrar_progreso "Directorios creados"
@@ -64,13 +64,54 @@ fi
 export PATH="$HOME/bin:$PATH"
 mostrar_progreso "Variables configuradas"
 
-# 8. Probar instalación
+# 8. Crear archivo de configuración
+echo "🎯 Creando configuración..."
+cat > ~/.devhelper/config.json << EOF
+{
+    "version": "2.0.0",
+    "instalado_el": "$(date)",
+    "tipo": "instalacion_un_clic",
+    "estado": "completado"
+}
+EOF
+mostrar_progreso "Configuración guardada"
+
+# 9. Crear ejemplos
+echo "📚 Creando ejemplos..."
+cat > ~/.devhelper/ejemplos/primeros_pasos.dhl << 'EOF'
+// EJEMPLOS DEVHELPER LANGUAGE - PRIMEROS PASOS
+
+// 1. Crear un proyecto web completo
+@proyecto mi_sitio_web
+
+// 2. Crear componentes individuales
+@crear html5 formulario_contacto
+@crear css3 estilos_personalizados
+@crear javascript mi_aplicacion
+
+// 3. Ver snippets disponibles
+@snippet html5
+@snippet css3
+@snippet javascript
+
+// 4. Gestionar archivos
+@listar
+@editar mi_sitio_web/index.html
+
+// 5. Obtener ayuda
+@ayuda
+@ejemplo
+@version
+EOF
+mostrar_progreso "Ejemplos creados"
+
+# 10. Probar instalación
 echo "🔍 Probando instalación..."
 if command -v devhelper > /dev/null 2>&1; then
     mostrar_progreso "Instalación verificada"
 else
     echo "⚠️ El comando no está disponible inmediatamente"
-    echo "Ejecuta: source ~/.bashrc"
+    echo "   Ejecuta: source ~/.bashrc"
 fi
 
 # MENSAJE FINAL
@@ -79,13 +120,22 @@ echo "🎉 ¡INSTALACIÓN COMPLETADA EXITOSAMENTE!"
 echo "========================================"
 echo ""
 echo "🚀 PARA COMENZAR:"
-echo "devhelper @ayuda       - Ver sistema de ayuda"
-echo "devhelper @ejemplo     - Ver ejemplos prácticos"
-echo "devhelper @proyecto demo - Crear proyecto demo"
+echo "   devhelper @ayuda       - Ver sistema de ayuda"
+echo "   devhelper @ejemplo     - Ver ejemplos prácticos"
+echo "   devhelper @proyecto demo - Crear proyecto demo"
 echo ""
 echo "💡 CONSEJOS:"
-echo "Reinicia Termux para mejor compatibilidad"
+echo "   • Reinicia Termux para mejor compatibilidad"
+echo "   • Usa @snippet para ver código reusable"
+echo "   • Los archivos .dhl contienen ejemplos"
+echo ""
+echo "📞 AYUDA:"
+echo "   devhelper @permisos    - Verificar instalación"
+echo "   devhelper @version     - Información de versión"
+echo ""
 echo "========================================"
+echo "DevHelper Language v2.0 - Code Faster, Create Smarter"
+echo ""
 
 # Probar comando inmediatamente
 echo "🎯 Probando comando..."
